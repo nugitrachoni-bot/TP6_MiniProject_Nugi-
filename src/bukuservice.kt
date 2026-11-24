@@ -70,23 +70,23 @@ class BukuService {
         return if (buku != null) {
             daftarBuku.remove(buku)
             simpanData()
-            println("✅ Buku berhasil dihapus!")
+            println("Buku berhasil dihapus!")
             true
         } else {
-            println("❌ Buku dengan ID $id tidak ditemukan.")
+            println("Buku dengan ID $id tidak ditemukan.")
             false
         }
     }
 
     fun urutBukuBerdasarkanJudul() {
         if (daftarBuku.isEmpty()) {
-            println("📂 Belum ada data buku.")
+            println("Belum ada data buku.")
             return
         }
         val urut = daftarBuku.sortedBy { it.judul.lowercase() }
         println("\n=== Daftar Buku (Diurutkan A–Z) ===")
         urut.forEachIndexed { i, buku ->
-            val status = if (buku.tersedia) "✅ Tersedia" else "📖 Dipinjam"
+            val status = if (buku.tersedia) "Tersedia" else "Dipinjam"
             println("${i + 1}. ${buku.id} — ${buku.judul} — ${buku.penulis} | $status")
         }
     }
@@ -94,7 +94,7 @@ class BukuService {
     fun filterBukuTersedia() {
         val tersedia = daftarBuku.filter { it.tersedia }
         if (tersedia.isEmpty()) {
-            println("📖 Tidak ada buku yang sedang tersedia.")
+            println("Tidak ada buku yang sedang tersedia.")
             return
         }
         println("\n=== Buku yang Tersedia ===")
@@ -108,9 +108,9 @@ class BukuService {
         val jumlahTersedia = daftarBuku.count { it.tersedia }
         val jumlahDipinjam = total - jumlahTersedia
         println("\n===== STATISTIK PERPUSTAKAAN =====")
-        println("📚 Total Buku      : $total")
-        println("✅ Tersedia        : $jumlahTersedia")
-        println("📖 Sedang Dipinjam : $jumlahDipinjam")
+        println("Total Buku      : $total")
+        println("Tersedia        : $jumlahTersedia")
+        println("Sedang Dipinjam : $jumlahDipinjam")
         println("====================================")
     }
 }
